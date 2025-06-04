@@ -32,11 +32,10 @@ client_addr = "{{ consul_client_addr }}"
 # Enables the built-in web UI server and the required HTTP routes. This eliminates
 # the need to maintain the Consul web UI files separately from the binary.
 # Version 1.10 deprecated ui=true in favor of ui_config.enabled=true
-ui_config{
 {% if consul_ui %}
-  enabled = true
+ui = true
 {% else %}
-  enabled = false
+ui = false
 {% endif %}
 }
 
@@ -68,9 +67,10 @@ bind_addr = "{{ consul_bind_addr }}"
 advertise_addr = "{{ consul_advertise_addr }}"
 {% endif %}
 
+# We won't use consul >= 1.10
 # Enterprise License
 # As of 1.10, Enterprise requires a license_path and does not have a short trial.
-license_path = "/etc/consul.d/consul.hclic"
+#license_path = "/etc/consul.d/consul.hclic"
 
 # bootstrap_expect
 # This flag provides the number of expected servers in the datacenter. Either this value
