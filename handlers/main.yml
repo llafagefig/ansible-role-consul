@@ -1,10 +1,10 @@
 ---
 # handlers file for consul
+- name: "Reload systemd"
+  ansible.builtin.systemd:
+    daemon_reload: true
 
 - name: Restart consul
   ansible.builtin.service:
     name: consul
     state: restarted
-  when:
-    - consul_license is defined
-    - consul_license != ""
